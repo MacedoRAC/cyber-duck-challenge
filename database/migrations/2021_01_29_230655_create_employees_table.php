@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateEmployeesTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -15,6 +16,13 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email')->unique()->nullable();
+            $table->string('phone', 10)->unique()->nullable();
+            $table->foreignId('company_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +34,10 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
+        Schema::table('employees', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('company_id');
+        });
+
         Schema::dropIfExists('employees');
     }
 }

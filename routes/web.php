@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompanyEmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +19,10 @@ Auth::routes([
     'register' => false
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::redirect('/', '/companies');
+Route::redirect('/home', '/companies')->name('home');
+
+Route::resources([
+    'companies' => CompanyController::class,
+    'companies.employees' => CompanyEmployeeController::class
+]);
