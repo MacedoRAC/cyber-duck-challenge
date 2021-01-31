@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
              'name' => 'Administrator',
              'email' => 'admin@admin.com'
          ]);
+
+         if(config('app.env') === 'local') {
+             $this->call(CompanyEmployeeSeeder::class);
+         }
     }
 }
