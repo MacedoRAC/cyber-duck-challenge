@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeFactory extends Factory
 {
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -19,10 +20,13 @@ class EmployeeFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            //
+            'first_name' => $this->faker->firstName,
+            'last_name'  => $this->faker->lastName,
+            'email'      => $this->faker->email,
+            'phone'      => $this->faker->numerify('##########')
         ];
     }
 }

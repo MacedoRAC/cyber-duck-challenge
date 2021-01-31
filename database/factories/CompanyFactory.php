@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CompanyFactory extends Factory
 {
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -19,10 +20,12 @@ class CompanyFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            //
+            'name'    => $this->faker->company,
+            'email'   => $this->faker->companyEmail,
+            'website' => $this->faker->url,
         ];
     }
 }

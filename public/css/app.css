@@ -10950,4 +10950,9 @@ a.text-dark:focus {
   width: 1%;
 }
 
+.required:after {
+  content: " *";
+  color: #ff0000;
+}
+
 
